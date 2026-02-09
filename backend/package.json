@@ -1,0 +1,11 @@
+{
+  "name": "wittydoctor-backend",
+  "version": "1.0.0",
+  "description": "Backend API and static frontend for WittyDoctor demo",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test tests/api.test.js"
+  }
+}

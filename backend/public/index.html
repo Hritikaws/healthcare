@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WittyDoctor.com | AI-Powered Healthcare Platform</title>
+    <meta
+      name="description"
+      content="WittyDoctor - Your complete healthcare solution with AI assistant, doctor appointments, home lab tests, and emergency ambulance services in Pune, India."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#" class="logo" id="logoButton">
+          <div class="logo-icon">
+            <i class="fas fa-heartbeat"></i>
+          </div>
+          <div class="logo-text">
+            <div class="logo-brand">WittyDoctor</div>
+            <div class="logo-domain">www.wittydoctor.com</div>
+          </div>
+        </a>
+        <ul class="nav-menu">
+          <li>
+            <a href="#features"><i class="fas fa-star"></i> Features</a>
+          </li>
+          <li>
+            <a href="#specialties"><i class="fas fa-stethoscope"></i> Specialties</a>
+          </li>
+          <li>
+            <a href="#doctors"><i class="fas fa-user-doctor"></i> Doctors</a>
+          </li>
+          <li>
+            <a href="#services"><i class="fas fa-hands-holding"></i> Services</a>
+          </li>
+          <li>
+            <button class="btn btn-danger" id="emergencyNav">
+              <i class="fas fa-ambulance"></i>
+              Emergency
+            </button>
+          </li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Open menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Your Health, Simplified</h1>
+          <p>
+            AI-powered healthcare in English, Hindi, and Marathi. Book appointments,
+            order tests, and get instant medical assistance - all in one platform.
+          </p>
+
+          <div class="search-box">
+            <div class="search-box-wrapper">
+              <i class="fas fa-search"></i>
+              <input
+                type="text"
+                id="searchInput"
+                placeholder="Search doctors, specialties, symptoms, or locations..."
+              />
+            </div>
+            <button id="searchButton">
+              <i class="fas fa-magnifying-glass"></i>
+              Search
+            </button>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-number" id="doctorCount">500+</span>
+              <span class="stat-label">
+                <i class="fas fa-user-doctor"></i>
+                Verified Doctors
+              </span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">10K+</span>
+              <span class="stat-label">
+                <i class="fas fa-users"></i>
+                Happy Patients
+              </span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">24/7</span>
+              <span class="stat-label">
+                <i class="fas fa-robot"></i>
+                AI Support
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <svg
+            class="hero-illustration"
+            viewBox="0 0 500 500"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="250" cy="250" r="200" fill="white" opacity="0.15" />
+            <circle cx="250" cy="250" r="150" fill="white" opacity="0.25" />
+            <circle cx="250" cy="250" r="100" fill="white" opacity="0.35" />
+            <path
+              d="M250 150 L250 350 M150 250 L350 250"
+              stroke="white"
+              stroke-width="25"
+              stroke-linecap="round"
+              opacity="0.9"
+            />
+            <circle cx="250" cy="250" r="50" fill="white" />
+            <path
+              d="M230 240 L245 255 L270 230"
+              stroke="#667eea"
+              stroke-width="8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <div class="container">
+        <div class="section-header">
+          <h2>Why Choose WittyDoctor?</h2>
+          <p>Complete healthcare management at your fingertips</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card" id="featureChat">
+            <div class="feature-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+            <h3>
+              <i class="fas fa-sparkles"></i>
+              Free AI Assistant
+            </h3>
+            <p>
+              Chat with "Witty Doctor" - your 24/7 AI health companion. Get instant
+              medical guidance in English, Hindi, and Marathi. Ask symptoms, get
+              advice, book appointments.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-calendar-check"></i>
+            </div>
+            <h3>
+              <i class="fas fa-clock"></i>
+              Easy Appointments
+            </h3>
+            <p>
+              Book consultations with verified doctors in seconds. Real-time
+              availability, instant confirmation, and automated reminders via
+              WhatsApp and SMS.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-house-medical"></i>
+            </div>
+            <h3>
+              <i class="fas fa-flask-vial"></i>
+              Home Lab Tests
+            </h3>
+            <p>
+              Professional sample collection at your doorstep. NABL certified labs,
+              digital reports in 24 hours, and free sample pickup across Pune.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-location-dot"></i>
+            </div>
+            <h3>
+              <i class="fas fa-map-location-dot"></i>
+              Near You
+            </h3>
+            <p>
+              Find the best doctors near your location with GPS-based search. See
+              real-time availability, ratings, and patient reviews before booking.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-video"></i>
+            </div>
+            <h3>
+              <i class="fas fa-laptop-medical"></i>
+              Video Consults
+            </h3>
+            <p>
+              Consult top doctors from home via secure HD video calls. Save time and
+              travel. Perfect for follow-ups and routine consultations.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-heart-pulse"></i>
+            </div>
+            <h3>
+              <i class="fas fa-chart-line"></i>
+              Health Tracking
+            </h3>
+            <p>
+              Sync with Apple Health, Google Fit, and Fitbit. Track vitals,
+              medications, and wellness goals all in one place with smart insights.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="specialties" id="specialties">
+      <div class="container">
+        <div class="section-header">
+          <h2>Medical Specialties</h2>
+          <p>Expert care for every health need</p>
+        </div>
+
+        <div class="specialties-grid" id="specialtiesGrid"></div>
+      </div>
+    </section>
+
+    <section class="doctors" id="doctors">
+      <div class="container">
+        <div class="section-header">
+          <h2>Top Doctors Near You</h2>
+          <p>Verified professionals with years of experience</p>
+        </div>
+
+        <div class="doctors-grid" id="doctorsGrid"></div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-header">
+          <h2>Our Services</h2>
+          <p>Comprehensive healthcare solutions</p>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-header">
+              <h3><i class="fas fa-flask"></i> Lab Tests at Home</h3>
+              <p>Professional collection, accurate results</p>
+            </div>
+            <div class="service-body">
+              <ul class="service-features">
+                <li><i class="fas fa-check-circle"></i> Sample collection at your doorstep</li>
+                <li><i class="fas fa-check-circle"></i> NABL certified partner labs</li>
+                <li><i class="fas fa-check-circle"></i> Reports in 24-48 hours</li>
+                <li><i class="fas fa-check-circle"></i> Free sample pickup</li>
+                <li><i class="fas fa-check-circle"></i> Digital report delivery</li>
+                <li><i class="fas fa-check-circle"></i> Track test status in real-time</li>
+              </ul>
+              <button class="btn btn-primary" style="width: 100%;" id="labTestButton">
+                <i class="fas fa-vial"></i>
+                Book Test
+              </button>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-header">
+              <h3><i class="fas fa-ambulance"></i> Emergency Ambulance</h3>
+              <p>Quick response, life-saving care</p>
+            </div>
+            <div class="service-body">
+              <ul class="service-features">
+                <li><i class="fas fa-check-circle"></i> GPS-based nearest ambulance</li>
+                <li><i class="fas fa-check-circle"></i> Real-time tracking</li>
+                <li><i class="fas fa-check-circle"></i> Trained paramedics onboard</li>
+                <li><i class="fas fa-check-circle"></i> BLS & ALS equipped</li>
+                <li><i class="fas fa-check-circle"></i> 24/7 availability</li>
+                <li><i class="fas fa-check-circle"></i> Direct hospital admission</li>
+              </ul>
+              <button class="btn btn-danger" style="width: 100%;" id="ambulanceButton">
+                <i class="fas fa-truck-medical"></i>
+                Book Now
+              </button>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-header">
+              <h3><i class="fas fa-pills"></i> Medicine Delivery</h3>
+              <p>Prescription medicines at your door</p>
+            </div>
+            <div class="service-body">
+              <ul class="service-features">
+                <li><i class="fas fa-check-circle"></i> Upload prescription easily</li>
+                <li><i class="fas fa-check-circle"></i> Verified pharmacies</li>
+                <li><i class="fas fa-check-circle"></i> Same-day delivery</li>
+                <li><i class="fas fa-check-circle"></i> Generic options available</li>
+                <li><i class="fas fa-check-circle"></i> Auto-refill reminders</li>
+                <li><i class="fas fa-check-circle"></i> 20% cheaper than retail</li>
+              </ul>
+              <button class="btn btn-primary" style="width: 100%;" id="medicineButton">
+                <i class="fas fa-prescription-bottle"></i>
+                Order Medicine
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ai-chat-widget">
+      <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+          <div class="chat-header-info">
+            <div class="chat-avatar">
+              <i class="fas fa-robot"></i>
+            </div>
+            <div class="chat-header-text">
+              <h3>Witty Doctor</h3>
+              <p>
+                <i class="fas fa-circle" style="color: #10b981;"></i>
+                Online • Ask me anything
+              </p>
+            </div>
+          </div>
+          <button class="close-chat" id="closeChat">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+          <div class="message">
+            <div class="message-avatar">
+              <i class="fas fa-robot"></i>
+            </div>
+            <div class="message-content">
+              <p><strong>👋 Hello! I'm Witty Doctor</strong></p>
+              <p style="margin-top: 8px;">
+                Your AI health assistant. I can help you with:
+              </p>
+              <p style="margin-top: 8px;">
+                • Understanding symptoms<br />
+                • Finding doctors<br />
+                • Booking appointments<br />
+                • Health advice
+              </p>
+              <p style="margin-top: 12px;">
+                <em>I speak: English • हिंदी • मराठी</em>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="typing-indicator" id="typingIndicator">
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+        </div>
+
+        <div class="quick-actions">
+          <button class="quick-action" data-message="I have fever">
+            <i class="fas fa-temperature-high"></i>
+            Fever
+          </button>
+          <button class="quick-action" data-message="Book appointment">
+            <i class="fas fa-calendar"></i>
+            Appointment
+          </button>
+          <button class="quick-action" data-message="Lab tests">
+            <i class="fas fa-flask"></i>
+            Lab Test
+          </button>
+          <button class="quick-action" data-message="Emergency">
+            <i class="fas fa-ambulance"></i>
+            Emergency
+          </button>
+        </div>
+
+        <div class="chat-input-container">
+          <div class="chat-input">
+            <input
+              type="text"
+              id="chatInput"
+              placeholder="Type your message..."
+            />
+            <button class="send-button" id="sendButton">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <button class="chat-button" id="chatButton">
+        <i class="fas fa-comment-medical"></i>
+        <div class="chat-button-badge">AI</div>
+      </button>
+    </div>
+
+    <div class="modal" id="bookingModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>
+            <i class="fas fa-calendar-check"></i>
+            Book Appointment
+          </h3>
+          <button class="close-modal" data-close="bookingModal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div
+          id="doctorInfo"
+          style="display: none; background: var(--gray-50); padding: 20px; border-radius: 16px; margin-bottom: 28px; border: 2px solid var(--gray-200);"
+        >
+          <div style="display: flex; gap: 16px; align-items: center;">
+            <img
+              id="modalDoctorAvatar"
+              style="width: 64px; height: 64px; border-radius: 50%; border: 3px solid white;"
+            />
+            <div>
+              <h4 id="modalDoctorName" style="margin-bottom: 6px; font-size: 18px;"></h4>
+              <p id="modalDoctorSpecialty" style="color: var(--primary); font-size: 14px; font-weight: 600;"></p>
+              <p id="modalDoctorFee" style="color: var(--gray-600); font-size: 13px;"></p>
+            </div>
+          </div>
+        </div>
+
+        <form id="bookingForm">
+          <div class="form-group">
+            <label>
+              <i class="fas fa-user"></i>
+              Patient Name *
+            </label>
+            <input type="text" name="patientName" required placeholder="Enter your full name" />
+          </div>
+
+          <div class="form-group">
+            <label>
+              <i class="fas fa-phone"></i>
+              Phone Number *
+            </label>
+            <input type="tel" name="phone" required placeholder="+91 XXXXX XXXXX" pattern="[0-9]{10}" />
+          </div>
+
+          <div class="form-group">
+            <label>
+              <i class="fas fa-calendar"></i>
+              Appointment Date *
+            </label>
+            <input type="date" name="date" required id="appointmentDate" />
+          </div>
+
+          <div class="form-group">
+            <label>
+              <i class="fas fa-clock"></i>
+              Select Time Slot *
+            </label>
+            <div class="time-slots" id="timeSlots"></div>
+          </div>
+
+          <div class="form-group">
+            <label>
+              <i class="fas fa-notes-medical"></i>
+              Reason for Visit
+            </label>
+            <textarea
+              name="reason"
+              rows="3"
+              placeholder="Describe your symptoms or reason for consultation (optional)"
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 500;">
+              <input type="checkbox" id="whatsappNotif" checked style="width: auto; cursor: pointer;" />
+              <i class="fab fa-whatsapp" style="color: #25D366; font-size: 18px;"></i>
+              <span>Send confirmation on WhatsApp</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 16px; font-size: 16px;">
+            <i class="fas fa-check-circle"></i>
+            Confirm Booking
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="success-message" id="successMessage">
+      <i class="fas fa-check-circle"></i>
+      <span id="successText"></span>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>
+            <i class="fas fa-heartbeat"></i>
+            WittyDoctor
+          </h4>
+          <p>
+            AI-powered healthcare platform providing 24/7 medical assistance in
+            multiple languages. Your health, simplified.
+          </p>
+          <p style="margin-top: 16px; color: white; font-weight: 600;">
+            <i class="fas fa-globe"></i>
+            www.wittydoctor.com
+          </p>
+          <div class="social-links">
+            <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>
+            <i class="fas fa-link"></i>
+            Quick Links
+          </h4>
+          <a href="#features"><i class="fas fa-chevron-right"></i> Features</a>
+          <a href="#specialties"><i class="fas fa-chevron-right"></i> Specialties</a>
+          <a href="#doctors"><i class="fas fa-chevron-right"></i> Find Doctors</a>
+          <a href="#services"><i class="fas fa-chevron-right"></i> Services</a>
+          <a href="#" id="footerChat"><i class="fas fa-chevron-right"></i> AI Assistant</a>
+        </div>
+
+        <div class="footer-section">
+          <h4>
+            <i class="fas fa-user-doctor"></i>
+            For Doctors
+          </h4>
+          <a href="#"><i class="fas fa-chevron-right"></i> Register as Doctor</a>
+          <a href="#"><i class="fas fa-chevron-right"></i> Doctor Dashboard</a>
+          <a href="#"><i class="fas fa-chevron-right"></i> Pricing Plans</a>
+          <a href="#"><i class="fas fa-chevron-right"></i> Support</a>
+          <a href="#"><i class="fas fa-chevron-right"></i> FAQs</a>
+        </div>
+
+        <div class="footer-section">
+          <h4>
+            <i class="fas fa-address-book"></i>
+            Contact Us
+          </h4>
+          <p><i class="fas fa-phone"></i> +91 1800-XXX-XXXX</p>
+          <p><i class="fas fa-envelope"></i> support@wittydoctor.com</p>
+          <p><i class="fas fa-map-marker-alt"></i> Pune, Maharashtra, India</p>
+          <p><i class="fas fa-clock"></i> Mon-Sat: 9 AM - 9 PM</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 WittyDoctor. All rights reserved.</p>
+        <p><a href="#" style="color: inherit;">Privacy Policy</a></p>
+        <p><a href="#" style="color: inherit;">Terms of Service</a></p>
+      </div>
+    </footer>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
