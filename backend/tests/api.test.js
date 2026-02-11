@@ -18,6 +18,10 @@ test('API endpoints respond with expected data', async () => {
   const baseUrl = `http://localhost:${port}`;
 
   try {
+    const healthResponse = await fetch(`${baseUrl}/api/health`).then((res) => res.json());
+    assert.equal(healthResponse.status, 'ok');
+    assert.equal(healthResponse.service, 'wittydoctor-backend');
+
     const specialties = await fetch(`${baseUrl}/api/specialties`).then((res) => res.json());
     assert.ok(Array.isArray(specialties));
     assert.ok(specialties.length > 0);
