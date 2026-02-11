@@ -100,14 +100,41 @@ Then hard refresh your browser:
 ```bash
 curl -s http://localhost:3000/api/health
 curl -s http://localhost:3000/ | head -n 40
-curl -s -o /dev/null -w "%{http_code}\n" http://localhost:3000/about.html
 ```
 
 Expected:
 
 - `/api/health` returns JSON with `"status":"ok"`
 - homepage HTML loads successfully
-- `/about.html` returns `200`
+
+## Product roadmap alignment (v1.0 go-live plan)
+
+Based on the full WittyDoctor development plan, this repo is currently a **working MVP**.
+For production readiness, implement in this order:
+
+1. **Security + Auth foundation**
+   - JWT auth, refresh tokens, OTP login, role-based access (Patient/Doctor/Admin)
+   - Validation (Zod/Joi), rate limiting, Helmet, audit logging
+2. **Doctor discovery and slot booking**
+   - Geolocation-based doctor search and slot conflict prevention
+   - Real availability updates and doctor profile pages
+3. **Payments + notifications**
+   - Razorpay order/verify/webhook/refunds
+   - WhatsApp notifications for booking/reminders/status updates
+4. **Consultation channels**
+   - Video consultation module (Twilio/Agora)
+   - AI chat escalation from symptom triage to appointment flow
+5. **Emergency + lab workflows**
+   - Nearest ambulance dispatch with live tracking
+   - Lab order booking, sample lifecycle, report delivery
+
+### Production readiness checklist
+
+- Add `/health`, `/ready`, `/metrics` checks for infra probes
+- Add structured logs and error monitoring
+- Add E2E tests for booking, payment, chat, and emergency scenarios
+- Add CI pipeline for test + build + deploy
+- Deploy backend behind process manager and reverse proxy
 
 ## Health check
 
