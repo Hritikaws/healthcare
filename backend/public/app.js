@@ -460,7 +460,7 @@ const initEventListeners = () => {
   document.getElementById('medicineButton').addEventListener('click', () => {
     showMessage('Medicine delivery coming soon! 💊');
   });
-  document.getElementById('featureChat').addEventListener('click', openAIChat);
+  document.getElementById('featureChat')?.addEventListener('click', openAIChat);
   document.getElementById('footerChat').addEventListener('click', (event) => {
     event.preventDefault();
     openAIChat();

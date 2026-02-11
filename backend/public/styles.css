@@ -168,7 +168,6 @@ body {
 
 .logo-text {
   display: flex;
-  flex-direction: column;
 }
 
 .logo-brand {
@@ -177,13 +176,6 @@ body {
   font-weight: 700;
   color: var(--primary);
   line-height: 1;
-}
-
-.logo-domain {
-  font-family: 'Calibri', sans-serif;
-  font-size: 11px;
-  color: var(--gray-500);
-  letter-spacing: 0.5px;
 }
 
 
@@ -605,65 +597,6 @@ body {
   font-size: 15px;
 }
 
-
-.about-preview {
-  padding: 90px 0;
-  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
-}
-
-.about-preview-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 28px;
-  align-items: stretch;
-}
-
-.about-preview-copy {
-  background: white;
-  border: 1px solid var(--gray-200);
-  border-radius: 20px;
-  box-shadow: var(--shadow);
-  padding: 28px;
-}
-
-.about-preview-copy h3 {
-  font-size: 28px;
-  margin-bottom: 10px;
-}
-
-.about-preview-copy p {
-  color: var(--gray-600);
-  margin-bottom: 14px;
-}
-
-.about-preview-stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-.about-stat-card {
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  color: white;
-  border-radius: 16px;
-  padding: 22px;
-  box-shadow: var(--shadow);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 120px;
-}
-
-.about-stat-value {
-  font-size: 30px;
-  font-weight: 700;
-  line-height: 1.1;
-}
-
-.about-stat-label {
-  font-size: 14px;
-  opacity: 0.95;
-}
 
 .specialties {
   padding: 80px 20px;
@@ -1411,9 +1344,8 @@ body {
 .success-message {
   display: none;
   position: fixed;
-  top: 100px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 90px;
+  right: 20px;
   background: var(--secondary);
   color: white;
   padding: 20px 32px;
@@ -1432,18 +1364,14 @@ body {
   display: flex;
 }
 
-.success-message i {
-  font-size: 20px;
-}
-
 @keyframes slideDown {
   from {
     opacity: 0;
-    transform: translate(-50%, -20px);
+    transform: translateY(-12px);
   }
   to {
     opacity: 1;
-    transform: translate(-50%, 0);
+    transform: translateY(0);
   }
 }
 
@@ -1544,14 +1472,6 @@ body {
 }
 
 @media (max-width: 768px) {
-  .about-preview-copy h3 {
-    font-size: 24px;
-  }
-
-  .about-preview-stats {
-    grid-template-columns: 1fr;
-  }
-
   .nav-menu {
     display: none;
   }

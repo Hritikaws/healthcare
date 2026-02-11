@@ -100,14 +100,12 @@ Then hard refresh your browser:
 ```bash
 curl -s http://localhost:3000/api/health
 curl -s http://localhost:3000/ | head -n 40
-curl -s -o /dev/null -w "%{http_code}\n" http://localhost:3000/about.html
 ```
 
 Expected:
 
 - `/api/health` returns JSON with `"status":"ok"`
 - homepage HTML loads successfully
-- `/about.html` returns `200`
 
 ## Product roadmap alignment (v1.0 go-live plan)
 
