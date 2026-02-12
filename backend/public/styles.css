@@ -215,6 +215,25 @@ body {
 
 .nav-link i {
   font-size: 14px;
+  color: var(--dark);
+  margin-bottom: 2px;
+}
+
+.dropdown-item small {
+  display: block;
+  font-size: 12px;
+  color: var(--gray-500);
+  line-height: 1.4;
+}
+
+.dropdown-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .arrow {
@@ -1475,6 +1494,14 @@ body {
 }
 
 @media (max-width: 768px) {
+  .about-preview-copy h3 {
+    font-size: 24px;
+  }
+
+  .about-preview-stats {
+    grid-template-columns: 1fr;
+  }
+
   .nav-menu {
     display: none;
   }
