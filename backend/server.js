@@ -157,6 +157,14 @@ const getContentType = (filePath) => {
 };
 
 const handleApiRequest = async (req, res, url) => {
+  if (req.method === 'GET' && url.pathname === '/api/health') {
+    return sendJson(res, 200, {
+      status: 'ok',
+      service: 'wittydoctor-backend',
+      timestamp: new Date().toISOString()
+    });
+  }
+
   if (req.method === 'GET' && url.pathname === '/api/specialties') {
     return sendJson(res, 200, specialties);
   }

@@ -254,17 +254,28 @@ const showDoctorProfile = (doctorId) => {
   }
 };
 
-const toggleChat = () => {
+const closeAIChat = () => {
+  const widget = document.querySelector('.ai-chat-widget');
   const chatWindow = document.getElementById('chatWindow');
-  chatWindow.classList.toggle('active');
-  if (chatWindow.classList.contains('active')) {
-    document.getElementById('chatInput').focus();
-  }
+  chatWindow.classList.remove('active');
+  widget?.classList.remove('chat-open');
 };
 
 const openAIChat = () => {
-  document.getElementById('chatWindow').classList.add('active');
+  const widget = document.querySelector('.ai-chat-widget');
+  const chatWindow = document.getElementById('chatWindow');
+  chatWindow.classList.add('active');
+  widget?.classList.add('chat-open');
   document.getElementById('chatInput').focus();
+};
+
+const toggleChat = () => {
+  const chatWindow = document.getElementById('chatWindow');
+  if (chatWindow.classList.contains('active')) {
+    closeAIChat();
+    return;
+  }
+  openAIChat();
 };
 
 const addMessage = (text, isUser) => {
@@ -322,6 +333,114 @@ const closeModal = (modalId) => {
   document.body.style.overflow = 'auto';
 };
 
+
+const closeAllDropdowns = () => {
+  document.querySelectorAll('.nav-item.open').forEach((item) => {
+    item.classList.remove('open');
+    const toggle = item.querySelector('.nav-dropdown-toggle');
+    if (toggle) {
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+};
+
+const openDropdown = (item) => {
+  closeAllDropdowns();
+  item.classList.add('open');
+  const toggle = item.querySelector('.nav-dropdown-toggle');
+  if (toggle) {
+    toggle.setAttribute('aria-expanded', 'true');
+  }
+};
+
+const initNavigation = () => {
+  const mobileToggle = document.querySelector('.mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  document.querySelectorAll('.nav-item.has-dropdown').forEach((item) => {
+    const toggle = item.querySelector('.nav-dropdown-toggle');
+    if (!toggle) return;
+
+    toggle.addEventListener('click', (event) => {
+      event.preventDefault();
+      const isOpen = item.classList.contains('open');
+      if (isOpen) {
+        closeAllDropdowns();
+      } else {
+        openDropdown(item);
+      }
+    });
+
+    toggle.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeAllDropdowns();
+        toggle.focus();
+      }
+    });
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('.nav-menu')) {
+      closeAllDropdowns();
+    }
+  });
+
+  document.querySelectorAll('[data-nav-close]').forEach((link) => {
+    link.addEventListener('click', () => {
+      closeAllDropdowns();
+    });
+  });
+
+  if (mobileToggle && mobileMenu) {
+    mobileToggle.addEventListener('click', () => {
+      const isActive = mobileMenu.classList.toggle('active');
+      mobileMenu.hidden = !isActive;
+      mobileToggle.setAttribute('aria-expanded', String(isActive));
+      mobileToggle.innerHTML = isActive
+        ? '<i class="fas fa-times"></i>'
+        : '<i class="fas fa-bars"></i>';
+    });
+  }
+
+  document.querySelectorAll('.mobile-link[data-mobile-target]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const target = button.dataset.mobileTarget;
+      const section = target ? document.querySelector(target) : null;
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+      if (mobileMenu?.classList.contains('active')) {
+        mobileMenu.classList.remove('active');
+        mobileMenu.hidden = true;
+        mobileToggle?.setAttribute('aria-expanded', 'false');
+        if (mobileToggle) {
+          mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+      }
+    });
+  });
+
+  const chatOpenButtons = [
+    document.getElementById('navChatOpen'),
+    document.getElementById('mobileChatOpen')
+  ].filter(Boolean);
+
+  chatOpenButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      openAIChat();
+      closeAllDropdowns();
+      if (mobileMenu?.classList.contains('active')) {
+        mobileMenu.classList.remove('active');
+        mobileMenu.hidden = true;
+        mobileToggle?.setAttribute('aria-expanded', 'false');
+        if (mobileToggle) {
+          mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+      }
+    });
+  });
+};
+
 const initEventListeners = () => {
   document.getElementById('searchButton').addEventListener('click', searchDoctors);
   document.getElementById('logoButton').addEventListener('click', (event) => {
@@ -329,6 +448,7 @@ const initEventListeners = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
   document.getElementById('emergencyNav').addEventListener('click', bookAmbulance);
+  document.getElementById('emergencyMobile')?.addEventListener('click', bookAmbulance);
   document.getElementById('ambulanceButton').addEventListener('click', bookAmbulance);
   document.getElementById('labTestButton').addEventListener('click', () => {
     showMessage('Lab test booking feature coming soon! 🧪');
@@ -336,15 +456,32 @@ const initEventListeners = () => {
   document.getElementById('medicineButton').addEventListener('click', () => {
     showMessage('Medicine delivery coming soon! 💊');
   });
-  document.getElementById('featureChat').addEventListener('click', openAIChat);
+  document.getElementById('featureChat')?.addEventListener('click', openAIChat);
   document.getElementById('footerChat').addEventListener('click', (event) => {
     event.preventDefault();
     openAIChat();
   });
   document.getElementById('chatButton').addEventListener('click', toggleChat);
-  document.getElementById('closeChat').addEventListener('click', toggleChat);
+  document.getElementById('closeChat').addEventListener('click', closeAIChat);
   document.getElementById('sendButton').addEventListener('click', sendMessage);
   document.getElementById('chatInput').addEventListener('keypress', handleChatEnter);
+
+  document.addEventListener('click', (event) => {
+    const widget = document.querySelector('.ai-chat-widget');
+    const chatWindow = document.getElementById('chatWindow');
+    if (!widget || !chatWindow.classList.contains('active')) {
+      return;
+    }
+    if (!widget.contains(event.target)) {
+      closeAIChat();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeAIChat();
+    }
+  });
   document.querySelectorAll('[data-close]').forEach((button) => {
     button.addEventListener('click', () => closeModal(button.dataset.close));
   });
@@ -374,6 +511,7 @@ const initApp = async () => {
   setMinDate();
   buildTimeSlots();
   initEventListeners();
+  initNavigation();
   initScrollEffects();
   await loadSpecialties();
   await loadDoctors();
