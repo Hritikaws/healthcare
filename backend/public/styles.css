@@ -215,6 +215,25 @@ body {
 
 .nav-link i {
   font-size: 14px;
+  color: var(--dark);
+  margin-bottom: 2px;
+}
+
+.dropdown-item small {
+  display: block;
+  font-size: 12px;
+  color: var(--gray-500);
+  line-height: 1.4;
+}
+
+.dropdown-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .arrow {
@@ -598,65 +617,6 @@ body {
 }
 
 
-.about-preview {
-  padding: 90px 0;
-  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
-}
-
-.about-preview-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 28px;
-  align-items: stretch;
-}
-
-.about-preview-copy {
-  background: white;
-  border: 1px solid var(--gray-200);
-  border-radius: 20px;
-  box-shadow: var(--shadow);
-  padding: 28px;
-}
-
-.about-preview-copy h3 {
-  font-size: 28px;
-  margin-bottom: 10px;
-}
-
-.about-preview-copy p {
-  color: var(--gray-600);
-  margin-bottom: 14px;
-}
-
-.about-preview-stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-.about-stat-card {
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  color: white;
-  border-radius: 16px;
-  padding: 22px;
-  box-shadow: var(--shadow);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 120px;
-}
-
-.about-stat-value {
-  font-size: 30px;
-  font-weight: 700;
-  line-height: 1.1;
-}
-
-.about-stat-label {
-  font-size: 14px;
-  opacity: 0.95;
-}
-
 .specialties {
   padding: 80px 20px;
   background: var(--gray-50);
@@ -896,6 +856,10 @@ body {
   bottom: 24px;
   right: 24px;
   z-index: 900;
+}
+
+.ai-chat-widget.chat-open .chat-button {
+  display: none;
 }
 
 .chat-button {
@@ -1405,15 +1369,14 @@ body {
   position: fixed;
   top: 90px;
   right: 20px;
-  background: var(--secondary);
+  background: var(--primary);
   color: white;
-  padding: 20px 32px;
-  border-radius: 16px;
+  padding: 16px 22px;
+  border-radius: 12px;
   box-shadow: var(--shadow-2xl);
   z-index: 10001;
   animation: slideDown 0.3s ease;
-  max-width: 90%;
-  display: flex;
+  max-width: min(90vw, 420px);
   align-items: center;
   gap: 12px;
   font-weight: 500;
