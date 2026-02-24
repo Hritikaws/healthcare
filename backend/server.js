@@ -7,6 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const PORT = process.env.PORT || 3000;
+const HOST = process.env.HOST || '0.0.0.0';
 
 const specialties = [
   { id: 1, name: 'Dermatology', icon: 'fa-spa', desc: 'Skin & Hair Care' },
@@ -157,6 +158,14 @@ const getContentType = (filePath) => {
 };
 
 const handleApiRequest = async (req, res, url) => {
+  if (req.method === 'GET' && url.pathname === '/api/health') {
+    return sendJson(res, 200, {
+      status: 'ok',
+      service: 'wittydoctor-backend',
+      timestamp: new Date().toISOString()
+    });
+  }
+
   if (req.method === 'GET' && url.pathname === '/api/specialties') {
     return sendJson(res, 200, specialties);
   }
@@ -254,8 +263,8 @@ const requestListener = async (req, res) => {
 
 const startServer = () => {
   const server = http.createServer(requestListener);
-  return server.listen(PORT, () => {
-    console.log(`WittyDoctor server running on http://localhost:${PORT}`);
+  return server.listen(PORT, HOST, () => {
+    console.log(`WittyDoctor server running on http://${HOST}:${PORT}`);
   });
 };
 
