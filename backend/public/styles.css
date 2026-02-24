@@ -1407,13 +1407,12 @@ body {
   right: 20px;
   background: var(--secondary);
   color: white;
-  padding: 20px 32px;
-  border-radius: 16px;
+  padding: 16px 22px;
+  border-radius: 12px;
   box-shadow: var(--shadow-2xl);
   z-index: 10001;
   animation: slideDown 0.3s ease;
-  max-width: 90%;
-  display: flex;
+  max-width: min(90vw, 420px);
   align-items: center;
   gap: 12px;
   font-weight: 500;

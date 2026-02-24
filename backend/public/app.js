@@ -254,17 +254,28 @@ const showDoctorProfile = (doctorId) => {
   }
 };
 
-const toggleChat = () => {
+const closeAIChat = () => {
+  const widget = document.querySelector('.ai-chat-widget');
   const chatWindow = document.getElementById('chatWindow');
-  chatWindow.classList.toggle('active');
-  if (chatWindow.classList.contains('active')) {
-    document.getElementById('chatInput').focus();
-  }
+  chatWindow.classList.remove('active');
+  widget?.classList.remove('chat-open');
 };
 
 const openAIChat = () => {
-  document.getElementById('chatWindow').classList.add('active');
+  const widget = document.querySelector('.ai-chat-widget');
+  const chatWindow = document.getElementById('chatWindow');
+  chatWindow.classList.add('active');
+  widget?.classList.add('chat-open');
   document.getElementById('chatInput').focus();
+};
+
+const toggleChat = () => {
+  const chatWindow = document.getElementById('chatWindow');
+  if (chatWindow.classList.contains('active')) {
+    closeAIChat();
+    return;
+  }
+  openAIChat();
 };
 
 const addMessage = (text, isUser) => {
@@ -451,9 +462,26 @@ const initEventListeners = () => {
     openAIChat();
   });
   document.getElementById('chatButton').addEventListener('click', toggleChat);
-  document.getElementById('closeChat').addEventListener('click', toggleChat);
+  document.getElementById('closeChat').addEventListener('click', closeAIChat);
   document.getElementById('sendButton').addEventListener('click', sendMessage);
   document.getElementById('chatInput').addEventListener('keypress', handleChatEnter);
+
+  document.addEventListener('click', (event) => {
+    const widget = document.querySelector('.ai-chat-widget');
+    const chatWindow = document.getElementById('chatWindow');
+    if (!widget || !chatWindow.classList.contains('active')) {
+      return;
+    }
+    if (!widget.contains(event.target)) {
+      closeAIChat();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeAIChat();
+    }
+  });
   document.querySelectorAll('[data-close]').forEach((button) => {
     button.addEventListener('click', () => closeModal(button.dataset.close));
   });
