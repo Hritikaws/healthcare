@@ -39,28 +39,6 @@ This repository contains a lightweight Node.js backend and static frontend for t
    ```
 5. When prompted, open the forwarded port `3000` in browser preview.
 
-### If you see `app.github.dev` HTTP 404
-
-Use this quick checklist:
-
-1. Ensure the backend is running from the correct folder:
-   ```bash
-   cd /workspaces/healthcare/backend
-   npm install
-   npm start
-   ```
-2. Confirm server health in terminal:
-   ```bash
-   curl -s http://localhost:3000/api/health
-   ```
-3. In **Ports** tab, verify port `3000` is present and open that exact URL.
-4. If still failing, stop and restart server, then reload the forwarded URL:
-   ```bash
-   pkill -f "node server.js" || true
-   cd /workspaces/healthcare/backend
-   npm start
-   ```
-
 ## Sync and deploy updates when localhost still shows old version
 
 If `git log` still shows only `aa4d8de` on `main`, your environment does not yet have the latest commits.
@@ -157,31 +135,6 @@ For production readiness, implement in this order:
 - Add E2E tests for booking, payment, chat, and emergency scenarios
 - Add CI pipeline for test + build + deploy
 - Deploy backend behind process manager and reverse proxy
-
-
-## Production scaffold status (Sprint 1 kick-off)
-
-The repository now includes a **production backend scaffold** while preserving the current demo app:
-
-- `backend/src/app.ts` and `backend/src/server.ts` with Express + middleware + `/health` and `/ready`
-- Module route stubs under `backend/src/modules/*`
-- Foundational middleware (`errorHandler`, `rateLimiter`, `validate`)
-- `backend/.env.example` for integration credentials (Twilio, Razorpay, WhatsApp, Claude, AWS, etc.)
-- `backend/prisma/schema.prisma` initial production data model
-- Root `docker-compose.yml` for PostgreSQL (PostGIS), MongoDB, Redis
-- Backend scripts:
-  - `npm run dev:api`
-  - `npm run build:api`
-  - `npm run start:api`
-
-### Next immediate actions before credential wiring
-
-1. `docker compose up -d`
-2. `cd backend && npm install`
-3. `cp .env.example .env`
-4. Fill credentials for Twilio, Razorpay, Meta WhatsApp, Anthropic, AWS, and SendGrid
-5. Add Prisma CLI/client and run migrations
-6. Implement Sprint-1 auth module and DB adapters
 
 ## Health check
 
