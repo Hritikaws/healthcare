@@ -32,22 +32,98 @@
           </div>
           <div class="logo-text">
             <div class="logo-brand">WittyDoctor</div>
-            <div class="logo-domain">www.wittydoctor.com</div>
           </div>
         </a>
-        <ul class="nav-menu">
-          <li>
-            <a href="#features"><i class="fas fa-star"></i> Features</a>
+
+        <ul class="nav-menu" id="navMenuDesktop">
+          <li class="nav-item has-dropdown">
+            <button class="nav-link nav-dropdown-toggle" type="button" aria-expanded="false">
+              <i class="fas fa-user-doctor"></i> Find Doctors
+              <i class="fas fa-chevron-down arrow"></i>
+            </button>
+            <div class="nav-dropdown dropdown-wide" role="menu">
+              <a href="#specialties" class="dropdown-item" data-nav-close>
+                <span class="dropdown-icon c-violet"><i class="fas fa-stethoscope"></i></span>
+                <span><strong>By Specialty</strong><small>Browse cardiology, pediatrics, dermatology and more.</small></span>
+              </a>
+              <a href="#doctors" class="dropdown-item" data-nav-close>
+                <span class="dropdown-icon c-blue"><i class="fas fa-star"></i></span>
+                <span><strong>Top Rated Doctors</strong><small>See highly-rated doctors near you with reviews.</small></span>
+              </a>
+              <a href="#doctors" class="dropdown-item" data-nav-close>
+                <span class="dropdown-icon c-teal"><i class="fas fa-video"></i></span>
+                <span><strong>Video Consult Available</strong><small>Book online consultations in minutes.</small></span>
+              </a>
+              <a href="#doctors" class="dropdown-item" data-nav-close>
+                <span class="dropdown-icon c-amber"><i class="fas fa-location-dot"></i></span>
+                <span><strong>Doctors Near You</strong><small>Find local doctors in Pune quickly.</small></span>
+              </a>
+            </div>
           </li>
-          <li>
-            <a href="#specialties"><i class="fas fa-stethoscope"></i> Specialties</a>
+
+          <li class="nav-item has-dropdown">
+            <button class="nav-link nav-dropdown-toggle" type="button" aria-expanded="false">
+              <i class="fas fa-calendar-check"></i> Consultations
+              <i class="fas fa-chevron-down arrow"></i>
+            </button>
+            <div class="nav-dropdown" role="menu">
+              <a href="#doctors" class="dropdown-item" data-nav-close>
+                <span class="dropdown-icon c-blue"><i class="fas fa-hospital-user"></i></span>
+                <span><strong>In-Clinic Visit</strong><small>Schedule a clinic appointment.</small></span>
+              </a>
+              <a href="#doctors" class="dropdown-item" data-nav-close>
+                <span class="dropdown-icon c-teal"><i class="fas fa-video"></i></span>
+                <span><strong>Video Consultation</strong><small>Secure HD video doctor call.</small></span>
+              </a>
+              <a href="#doctors" class="dropdown-item" data-nav-close>
+                <span class="dropdown-icon c-violet"><i class="fas fa-phone"></i></span>
+                <span><strong>Phone Consultation</strong><small>Quick call consultation support.</small></span>
+              </a>
+            </div>
           </li>
-          <li>
-            <a href="#doctors"><i class="fas fa-user-doctor"></i> Doctors</a>
+
+          <li class="nav-item has-dropdown">
+            <button class="nav-link nav-dropdown-toggle" type="button" aria-expanded="false">
+              <i class="fas fa-hands-holding"></i> Services
+              <i class="fas fa-chevron-down arrow"></i>
+            </button>
+            <div class="nav-dropdown dropdown-wide" role="menu">
+              <a href="#services" class="dropdown-item" data-nav-close>
+                <span class="dropdown-icon c-rose"><i class="fas fa-flask"></i></span>
+                <span><strong>Lab Tests at Home</strong><small>Book doorstep sample collection.</small></span>
+              </a>
+              <a href="#services" class="dropdown-item" data-nav-close>
+                <span class="dropdown-icon c-blue"><i class="fas fa-ambulance"></i></span>
+                <span><strong>Emergency Ambulance</strong><small>24/7 rapid ambulance dispatch.</small></span>
+              </a>
+              <a href="#services" class="dropdown-item" data-nav-close>
+                <span class="dropdown-icon c-amber"><i class="fas fa-pills"></i></span>
+                <span><strong>Medicine Delivery</strong><small>Prescription medicine ordering.</small></span>
+              </a>
+              <a href="#features" class="dropdown-item" data-nav-close>
+                <span class="dropdown-icon c-teal"><i class="fas fa-heartbeat"></i></span>
+                <span><strong>Wellness & Tracking</strong><small>Track goals and health insights.</small></span>
+              </a>
+            </div>
           </li>
-          <li>
-            <a href="#services"><i class="fas fa-hands-holding"></i> Services</a>
+
+          <li class="nav-item has-dropdown">
+            <button class="nav-link nav-dropdown-toggle" type="button" aria-expanded="false">
+              <i class="fas fa-robot"></i> AI Assistant
+              <i class="fas fa-chevron-down arrow"></i>
+            </button>
+            <div class="nav-dropdown" role="menu">
+              <button class="dropdown-item dropdown-button" id="navChatOpen" type="button">
+                <span class="dropdown-icon c-violet"><i class="fas fa-comment-medical"></i></span>
+                <span><strong>Chat with Witty Doctor</strong><small>Get instant multilingual guidance.</small></span>
+              </button>
+              <a href="#features" class="dropdown-item" data-nav-close>
+                <span class="dropdown-icon c-teal"><i class="fas fa-language"></i></span>
+                <span><strong>English • हिंदी • मराठी</strong><small>Accessible support in 3 languages.</small></span>
+              </a>
+            </div>
           </li>
+
           <li>
             <button class="btn btn-danger" id="emergencyNav">
               <i class="fas fa-ambulance"></i>
@@ -55,9 +131,19 @@
             </button>
           </li>
         </ul>
-        <button class="mobile-menu-btn" aria-label="Open menu">
+
+        <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
           <i class="fas fa-bars"></i>
         </button>
+      </div>
+
+      <div class="mobile-nav" id="mobileMenu" hidden>
+        <button class="mobile-link" data-mobile-target="#features" type="button"><i class="fas fa-star"></i> Features</button>
+        <button class="mobile-link" data-mobile-target="#specialties" type="button"><i class="fas fa-stethoscope"></i> Specialties</button>
+        <button class="mobile-link" data-mobile-target="#doctors" type="button"><i class="fas fa-user-doctor"></i> Doctors</button>
+        <button class="mobile-link" data-mobile-target="#services" type="button"><i class="fas fa-hands-holding"></i> Services</button>
+        <button class="mobile-link" id="mobileChatOpen" type="button"><i class="fas fa-robot"></i> AI Assistant</button>
+        <button class="mobile-link mobile-emergency" id="emergencyMobile" type="button"><i class="fas fa-ambulance"></i> Emergency</button>
       </div>
     </nav>
 
@@ -87,24 +173,24 @@
 
           <div class="hero-stats">
             <div class="stat">
-              <span class="stat-number" id="doctorCount">500+</span>
+              <span class="stat-number">2,500+</span>
+              <span class="stat-label">
+                <i class="fas fa-users"></i>
+                Patients Served
+              </span>
+            </div>
+            <div class="stat">
+              <span class="stat-number" id="doctorCount">20+</span>
               <span class="stat-label">
                 <i class="fas fa-user-doctor"></i>
                 Verified Doctors
               </span>
             </div>
             <div class="stat">
-              <span class="stat-number">10K+</span>
-              <span class="stat-label">
-                <i class="fas fa-users"></i>
-                Happy Patients
-              </span>
-            </div>
-            <div class="stat">
               <span class="stat-number">24/7</span>
               <span class="stat-label">
-                <i class="fas fa-robot"></i>
-                AI Support
+                <i class="fas fa-headset"></i>
+                Support
               </span>
             </div>
           </div>
@@ -235,6 +321,7 @@
         </div>
       </div>
     </section>
+
 
     <section class="specialties" id="specialties">
       <div class="container">
@@ -511,7 +598,6 @@
     </div>
 
     <div class="success-message" id="successMessage">
-      <i class="fas fa-check-circle"></i>
       <span id="successText"></span>
     </div>
 
@@ -525,10 +611,6 @@
           <p>
             AI-powered healthcare platform providing 24/7 medical assistance in
             multiple languages. Your health, simplified.
-          </p>
-          <p style="margin-top: 16px; color: white; font-weight: 600;">
-            <i class="fas fa-globe"></i>
-            www.wittydoctor.com
           </p>
           <div class="social-links">
             <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
