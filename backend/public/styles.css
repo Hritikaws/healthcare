@@ -1601,3 +1601,27 @@ html {
     transform: rotate(360deg);
   }
 }
+
+.feature-form {
+  display: grid;
+  gap: 12px;
+}
+
+.feature-form input,
+.feature-form select,
+.feature-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--gray-300);
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.feature-form input:focus,
+.feature-form select:focus,
+.feature-form textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.12);
+}

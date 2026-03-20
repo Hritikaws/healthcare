@@ -133,7 +133,11 @@ const renderDoctors = (doctors) => {
 const loadDoctors = async (query = '') => {
   const data = await fetchJson(`/api/doctors?search=${encodeURIComponent(query)}`);
   state.doctors = data.doctors;
-  document.getElementById('doctorCount').textContent = `${data.count}+`;
+  const doctorCountEl = document.getElementById('doctorCount');
+  if (doctorCountEl) {
+    const displayedDoctors = Math.max(Number(data.count) || 0, 20);
+    doctorCountEl.textContent = `${displayedDoctors}+`;
+  }
   renderDoctors(state.doctors);
 };
 
@@ -451,15 +455,15 @@ const initEventListeners = () => {
   document.getElementById('emergencyMobile')?.addEventListener('click', bookAmbulance);
   document.getElementById('ambulanceButton').addEventListener('click', bookAmbulance);
   document.getElementById('labTestButton').addEventListener('click', () => {
-    showMessage('Lab test booking feature coming soon! 🧪');
+    window.location.href = '/forms.html?feature=lab';
   });
   document.getElementById('medicineButton').addEventListener('click', () => {
-    showMessage('Medicine delivery coming soon! 💊');
+    window.location.href = '/forms.html?feature=medicine';
   });
   document.getElementById('featureChat')?.addEventListener('click', openAIChat);
   document.getElementById('footerChat').addEventListener('click', (event) => {
     event.preventDefault();
-    openAIChat();
+    window.location.href = '/forms.html?feature=chat';
   });
   document.getElementById('chatButton').addEventListener('click', toggleChat);
   document.getElementById('closeChat').addEventListener('click', closeAIChat);
