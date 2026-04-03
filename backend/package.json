@@ -9,8 +9,7 @@
     "test": "node --test tests/api.test.js",
     "dev:api": "nodemon --watch src --ext ts --exec ts-node src/server.ts",
     "build:api": "tsc -p tsconfig.json",
-    "start:api": "node dist/server.js",
-    "restart:dev": "bash ./scripts/restart-dev.sh"
+    "start:api": "node dist/server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
