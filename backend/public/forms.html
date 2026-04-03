@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WittyDoctor Requirement Forms</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  </head>
+  <body>
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="/" class="logo"><i class="fas fa-heartbeat"></i> WittyDoctor</a>
+        <div class="nav-actions">
+          <a class="btn btn-outline" href="/features.html">Feature Hub</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="section" style="padding-top: 110px;">
+      <div class="container">
+        <div class="section-header">
+          <h1>Feature Requirement Forms</h1>
+          <p>Fill the relevant form to proceed. Submissions are demo-captured for now.</p>
+        </div>
+
+        <div class="services-grid">
+          <section class="service-card" id="appointment">
+            <div class="service-header"><h3><i class="fas fa-user-doctor"></i> Appointment Request</h3></div>
+            <div class="service-body">
+              <form class="feature-form" data-form-name="Appointment">
+                <input required name="name" placeholder="Patient full name" />
+                <input required name="phone" placeholder="Phone number" pattern="[0-9]{10}" />
+                <input required name="specialty" placeholder="Required specialty" />
+                <textarea name="symptoms" rows="3" placeholder="Symptoms / reason"></textarea>
+                <button class="btn btn-primary" type="submit">Submit Appointment Request</button>
+              </form>
+            </div>
+          </section>
+
+          <section class="service-card" id="lab">
+            <div class="service-header"><h3><i class="fas fa-flask"></i> Lab Test Booking</h3></div>
+            <div class="service-body">
+              <form class="feature-form" data-form-name="Lab Test">
+                <input required name="patientName" placeholder="Patient name" />
+                <input required name="tests" placeholder="Tests required (CBC, LFT...)" />
+                <input required name="address" placeholder="Sample collection address" />
+                <select required name="fasting"><option value="">Fasting required?</option><option>Yes</option><option>No</option></select>
+                <button class="btn btn-primary" type="submit">Submit Lab Request</button>
+              </form>
+            </div>
+          </section>
+
+          <section class="service-card" id="ambulance">
+            <div class="service-header"><h3><i class="fas fa-ambulance"></i> Ambulance Dispatch Form</h3></div>
+            <div class="service-body">
+              <form class="feature-form" data-form-name="Ambulance">
+                <input required name="callerName" placeholder="Caller name" />
+                <input required name="callerPhone" placeholder="Emergency contact" pattern="[0-9]{10}" />
+                <input required name="pickup" placeholder="Pickup location + landmark" />
+                <select required name="severity"><option value="">Select severity</option><option>Critical</option><option>Urgent</option><option>Stable</option></select>
+                <button class="btn btn-danger" type="submit">Submit Emergency Request</button>
+              </form>
+            </div>
+          </section>
+
+          <section class="service-card" id="medicine">
+            <div class="service-header"><h3><i class="fas fa-pills"></i> Medicine Delivery Form</h3></div>
+            <div class="service-body">
+              <form class="feature-form" data-form-name="Medicine Delivery">
+                <input required name="patient" placeholder="Patient name" />
+                <input required name="medicineList" placeholder="Medicine names" />
+                <input required name="deliveryAddress" placeholder="Delivery address" />
+                <select required name="deliveryType"><option value="">Delivery speed</option><option>Express (2-4 hrs)</option><option>Standard (same day)</option></select>
+                <button class="btn btn-primary" type="submit">Submit Medicine Order</button>
+              </form>
+            </div>
+          </section>
+
+          <section class="service-card" id="doctor-onboarding">
+            <div class="service-header"><h3><i class="fas fa-stethoscope"></i> Doctor Onboarding</h3></div>
+            <div class="service-body">
+              <form class="feature-form" data-form-name="Doctor Onboarding">
+                <input required name="doctorName" placeholder="Doctor full name" />
+                <input required name="specialty" placeholder="Specialty" />
+                <input required name="license" placeholder="Medical license number" />
+                <input required name="fee" placeholder="Consultation fee (INR)" type="number" min="0" />
+                <button class="btn btn-primary" type="submit">Submit Doctor Application</button>
+              </form>
+            </div>
+          </section>
+
+          <section class="service-card" id="corporate">
+            <div class="service-header"><h3><i class="fas fa-building"></i> Corporate Plan Requirement</h3></div>
+            <div class="service-body">
+              <form class="feature-form" data-form-name="Corporate">
+                <input required name="company" placeholder="Company name" />
+                <input required name="employees" placeholder="Employee count" type="number" min="1" />
+                <input required name="contact" placeholder="Contact person" />
+                <input required name="email" placeholder="Work email" type="email" />
+                <button class="btn btn-primary" type="submit">Request Corporate Demo</button>
+              </form>
+            </div>
+          </section>
+
+          <section class="service-card" id="support">
+            <div class="service-header"><h3><i class="fas fa-headset"></i> Support / Escalation</h3></div>
+            <div class="service-body">
+              <form class="feature-form" data-form-name="Support">
+                <input required name="name" placeholder="Your name" />
+                <input required name="phone" placeholder="Phone" pattern="[0-9]{10}" />
+                <select required name="issueType"><option value="">Issue type</option><option>Booking issue</option><option>Payment issue</option><option>Technical issue</option><option>Other</option></select>
+                <textarea name="issue" rows="3" placeholder="Describe your issue"></textarea>
+                <button class="btn btn-primary" type="submit">Submit Support Ticket</button>
+              </form>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const feature = params.get('feature');
+      if (feature) {
+        const target = document.getElementById(feature);
+        target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      document.querySelectorAll('.feature-form').forEach((form) => {
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+          const formName = form.dataset.formName || 'Form';
+          alert(`${formName} submitted successfully. Our team will contact you soon.`);
+          form.reset();
+        });
+      });
+    </script>
+  </body>
+</html>
